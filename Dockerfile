@@ -17,7 +17,7 @@ RUN mvn clean install -Dmaven.test.skip=true
 
 #Stage 2: Run The Application
 # set base image for second stage
-FROM adoptopenjdk/openjdk17:jre-17.0.0_7-alpine
+FROM eclipse-temurin:17-jre-alpine
 # set deployment directory
 WORKDIR /app
 # copy over the built artifact from the maven image
