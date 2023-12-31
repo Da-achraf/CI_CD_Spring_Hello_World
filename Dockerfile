@@ -32,7 +32,7 @@ WORKDIR /app
 # copy over the built artifact from the maven image
 COPY /target/*.jar /app/app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "./app.jar"]
 
 
 
