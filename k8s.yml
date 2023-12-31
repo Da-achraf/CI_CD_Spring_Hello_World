@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-spring-deployment
+  labels:
+    app: hello-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-spring
+  template:
+    metadata:
+      name: hello-spring-pod
+      labels:
+        app: hello-spring
+    spec:
+      containers:
+        - name: hello-spring-container
+          image: slord11/hello-spring
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-spring-service
+spec:
+  selector:
+    app: hello-spring
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: NodePort
