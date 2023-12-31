@@ -1,0 +1,6 @@
+services:
+  app:
+    image: hello-spring
+    pull_policy: always
+    ports:
+      - "8080:8080"

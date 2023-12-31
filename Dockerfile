@@ -1,7 +1,7 @@
 
 #Stage 1: Build the Jar
 # initialize build and set base image for first stage
-FROM maven:3.6.3-adoptopenjdk-11 as Build
+FROM maven:3.8.4-openjdk-17-slim as Build
 # speed up Maven JVM a bit
 ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 # set working directory
@@ -17,7 +17,7 @@ RUN mvn clean install -Dmaven.test.skip=true
 
 #Stage 2: Run The Application
 # set base image for second stage
-FROM adoptopenjdk/openjdk11:jre-11.0.9_11-alpine
+FROM adoptopenjdk/openjdk17:jre-17.0.0_7-alpine
 # set deployment directory
 WORKDIR /app
 # copy over the built artifact from the maven image
