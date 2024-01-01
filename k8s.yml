@@ -18,10 +18,9 @@ spec:
       containers:
         - name: hello-spring-container
           image: slord11/hello-spring
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
-      restartPolicy: Always
 
 ---
 
